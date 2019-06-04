@@ -35,7 +35,8 @@ for transaction in transactions:
 		trans_hash = receipt.transactionHash
 
 
-
 print(mid)
 print()
 print(block_hash.hex())
+print()
+print(trans_hash.hex())
