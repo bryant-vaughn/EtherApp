@@ -25,7 +25,16 @@ while(low < high - 1): #using high - 1 to avoid infinite loop
 if len(web3.eth.getCode(account = contract_address, block_identifier = mid).hex()) == 2:
 	mid += 1
 
-block_hash = web3.eth.getBlock(mid).hash
+block = web3.eth.getBlock(mid)
+block_hash = block.hash
+transactions = block.transactions
+
+for transaction in transactions:
+	receipt = web3.eth.getTransactionReceipt(transaction)
+	if(receipt.contractAddress == contract_address):
+		trans_hash = receipt.transactionHash
+
+
 
 print(mid)
 print()
