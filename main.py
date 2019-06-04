@@ -21,7 +21,7 @@ while(low < high - 1):
 		high = mid
 		mid = (low + high) // 2
 
-if web3.eth.getCode(account = contract_address, block_identifier = mid).hex() == '0x':
+if len(web3.eth.getCode(account = contract_address, block_identifier = mid).hex()) == 2:
 	mid += 1
 
 block_hash = web3.eth.getBlock(mid).hash
