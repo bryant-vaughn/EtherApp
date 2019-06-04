@@ -10,7 +10,8 @@ low = 0
 high = web3.eth.blockNumber
 mid = high // 2
 
-while(low < high - 1):
+while(low < high - 1): #using high - 1 to avoid infinite loop
+	
 	bytecode = web3.eth.getCode(account = contract_address, block_identifier = mid).hex()
 
 	# using binary approach to find first instance of contract
