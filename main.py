@@ -1,6 +1,7 @@
 import sys
 from web3 import Web3
 
+# read in and store terminal arguments
 contract_address = sys.argv[1]
 infura_url = sys.argv[3]
 
