@@ -2,7 +2,7 @@ import sys
 from web3 import Web3
 
 contract_address = sys.argv[1]
-infura_url = sys.argv[2]
+infura_url = sys.argv[3]
 
 web3 = Web3(Web3.HTTPProvider(infura_url))
 
@@ -37,5 +37,5 @@ for transaction in transactions:
 
 print()
 print("Block: " + block_hash.hex())
-print()
 print("Transaction: " + trans_hash.hex())
+print()
