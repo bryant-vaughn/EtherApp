@@ -10,15 +10,22 @@ low = 0
 high = web3.eth.blockNumber
 mid = high // 2
 
-while(low < high):
+while(low < high - 1):
 	bytecode = web3.eth.getCode(account = contract_address, block_identifier = mid).hex()
 
 	# using binary approach to find first instance of contract
-	if bytecode == '0x': # contract doesn't exist yet at this block
+	if len(bytecode) == 2: # contract doesn't exist yet at this block
 		low = mid
 		mid = (low + high) // 2
-	elif bytecode != '0x': # contract could 
+	else: # contract exists at this block
 		high = mid
 		mid = (low + high) // 2
 
-print(bytecode)
+if web3.eth.getCode(account = contract_address, block_identifier = mid).hex() == '0x':
+	mid += 1
+
+block_hash = web3.eth.getBlock(mid).hash
+
+print(mid)
+print()
+print(block_hash.hex())
